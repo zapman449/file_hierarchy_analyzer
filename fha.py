@@ -73,6 +73,7 @@ def gather(workingdir) :
     """walk the directory, gathering size and extension data"""
     if not os.path.isdir(workingdir) :
         print "ERROR: directory %s is not a valid directory" % workingdir
+        sys.exit(1)
     filecount = 0
     for root, dirs, files in os.walk(workingdir) :
         for filename in files :
