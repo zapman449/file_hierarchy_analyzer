@@ -32,7 +32,7 @@ for size,desc in sizebuckets :
 extensions = {}
 
 def get_extension(filename) :
-    """returns the extension (text after last period), or None if no period is
+    """returns the extension (text after last period), or 'no_extension' if no period is
     found (or is last char)."""
     index = filename.rfind('.')
     if index == -1 :
