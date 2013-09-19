@@ -14,16 +14,16 @@ import os.path
 import sys
 
 sizebuckets = [
-    (1024,          '<1kB'),
-    (1024 * 10,     '<10kB'),
+    (1024,          '<  1kB'),
+    (1024 * 10,     '< 10kB'),
     (1024 * 100,    '<100kB'),
     (1024 * 500,    '<500kB'),
-    (1024**2,       '<1mB'),
+    (1024**2,       '<  1mB'),
     (1024**2 * 500, '<500mB'),
-    (1024**3,       '<1gB'),
+    (1024**3,       '<  1gB'),
     (1024**3 * 500, '<500gB'),
-    (1024**4,       '<1tB'),
-    (0,             '>1tB') ]
+    (1024**4,       '<  1tB'),
+    (0,             '>  1tB') ]
 
 sizes = {}
 for size,desc in sizebuckets :
@@ -37,11 +37,11 @@ def get_extension(filename) :
     index = filename.rfind('.')
     if index == -1 :
         return 'no_extension'
-    elif index == len(filename) - 1 :
+    elif index == len(filename) - 1:
         # if last char
         return 'no_extension'
     else :
-        extension = filename[index+1:]
+        extension = filename[index:]
         return extension
 
 def size_parse(fullpath) :
@@ -92,7 +92,7 @@ def gather(workingdir) :
 
 def report_sizes() :
     """using the sizes dictionary, report on sizes"""
-    print "size                count"
+    print "  size             count"
     for size,desc in sizebuckets :
         print "%6s        %10d" % (desc, sizes[desc])
     print
