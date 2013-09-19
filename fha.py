@@ -61,7 +61,7 @@ def size_parse(fullpath) :
             return desc
 
 def usage() :
-        print """"USAGE:
+        print """USAGE:
 %s <-h|--help>
     print this message
 %s <directory>
