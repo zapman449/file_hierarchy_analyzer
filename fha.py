@@ -5,7 +5,6 @@ Program to analyize the contents of a given directory (and subdirectories).
 
 Initial design: give counts of each extension type, and a break down by size
 of the files into various buckets. Follows the pattern of:
-    <1k, <10k, <100k, <500k, <1m, <500m, <1g, <500g, <1t, >1t
 """
 
 import operator
@@ -13,14 +12,25 @@ import os
 import os.path
 import sys
 
+# NOTE: To change what size buckets you care about, add them to the below list.
+# requirements: 
+# 1) The list must be in accending order of size.
+# 2) The last entry must be zero. 
+# 3) The tuple format is a numeric size, followed by a string (text) 
+#    description.
+
 sizebuckets = [
     (1024,          '<  1kB'),
     (1024 * 10,     '< 10kB'),
     (1024 * 100,    '<100kB'),
     (1024 * 500,    '<500kB'),
     (1024**2,       '<  1mB'),
+    (1024**2 * 10,  '< 10mB'),
+    (1024**2 * 100, '<100mB'),
     (1024**2 * 500, '<500mB'),
     (1024**3,       '<  1gB'),
+    (1024**3 * 10,  '< 10gB'),
+    (1024**3 * 100, '<100gB'),
     (1024**3 * 500, '<500gB'),
     (1024**4,       '<  1tB'),
     (0,             '>  1tB') ]
